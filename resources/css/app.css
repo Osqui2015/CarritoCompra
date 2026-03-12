@@ -1,0 +1,58 @@
+@import url("https://fonts.bunny.net/css?family=instrument-serif:400|space-grotesk:400,500,700");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --canvas: #f4efe6;
+        --canvas-glow: #d8f0e5;
+        --ink: #0f172a;
+        --muted: #475569;
+        --panel: rgba(255, 255, 255, 0.8);
+        --stroke: rgba(148, 163, 184, 0.28);
+        --accent: #0f766e;
+        --accent-soft: #d6f4ee;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background:
+            radial-gradient(
+                circle at top left,
+                rgba(15, 118, 110, 0.16),
+                transparent 32%
+            ),
+            radial-gradient(
+                circle at top right,
+                rgba(29, 78, 216, 0.14),
+                transparent 30%
+            ),
+            linear-gradient(180deg, var(--canvas) 0%, #f8fafc 54%, #eef5ff 100%);
+        color: var(--ink);
+        font-family: "Space Grotesk", sans-serif;
+        min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        letter-spacing: -0.04em;
+    }
+
+    ::selection {
+        background: var(--accent);
+        color: #f8fafc;
+    }
+}
+
+@layer components {
+    .display-serif {
+        font-family: "Instrument Serif", serif;
+    }
+}
