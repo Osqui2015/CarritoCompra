@@ -90,6 +90,10 @@ interface AppearanceSettings {
     store_address: string | null;
     business_hours: string | null;
     sales_whatsapp: string | null;
+    store_name: string | null;
+    store_phone: string | null;
+    store_email: string | null;
+    store_whatsapp: string | null;
 }
 
 interface AppliedCoupon {
