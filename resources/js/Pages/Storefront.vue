@@ -2204,22 +2204,39 @@ onBeforeUnmount(() => {
                     <div
                         class="flex flex-wrap items-center gap-3 text-sm text-slate-600"
                     >
-                        <span>{{
-                            appearance.store_address ||
-                            "Sin direccion comercial"
-                        }}</span>
-                        <span>{{
-                            appearance.business_hours || "Horario pendiente"
-                        }}</span>
-                        <a
-                            v-if="salesWhatsappUrl"
-                            :href="salesWhatsappUrl"
-                            target="_blank"
-                            rel="noreferrer"
-                            class="rounded-full border border-emerald-300 px-4 py-2 font-semibold text-emerald-700 transition hover:bg-emerald-50"
-                        >
-                            WhatsApp
-                        </a>
+                        <span v-if="appearance.store_name">
+                            <strong>{{ appearance.store_name }}</strong>
+                        </span>
+                        <span v-if="appearance.store_address">
+                            {{ appearance.store_address }}
+                        </span>
+                        <span v-if="appearance.business_hours">
+                            {{ appearance.business_hours }}
+                        </span>
+                        <span v-if="appearance.store_phone">
+                            <a
+                                :href="`tel:${appearance.store_phone}`"
+                                class="underline hover:text-slate-900"
+                                >Tel: {{ appearance.store_phone }}</a
+                            >
+                        </span>
+                        <span v-if="appearance.store_email">
+                            <a
+                                :href="`mailto:${appearance.store_email}`"
+                                class="underline hover:text-slate-900"
+                                >{{ appearance.store_email }}</a
+                            >
+                        </span>
+                        <span v-if="appearance.store_whatsapp">
+                            <a
+                                :href="`https://wa.me/${appearance.store_whatsapp.replace(/\D+/g, '')}`"
+                                target="_blank"
+                                rel="noreferrer"
+                                class="rounded-full border border-emerald-300 px-4 py-2 font-semibold text-emerald-700 transition hover:bg-emerald-50"
+                            >
+                                WhatsApp
+                            </a>
+                        </span>
                     </div>
                 </div>
             </footer>

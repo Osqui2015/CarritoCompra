@@ -16,6 +16,10 @@ class StoreSetting extends Model implements HasMedia
      * @var list<string>
      */
     protected $fillable = [
+        'store_name',
+        'store_email',
+        'store_phone',
+        'store_whatsapp',
         'low_stock_threshold',
         'sales_whatsapp',
         'store_address',

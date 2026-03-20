@@ -188,6 +188,10 @@ class StorefrontController extends Controller
                 'store_address' => $settings->store_address,
                 'business_hours' => $settings->business_hours,
                 'sales_whatsapp' => $settings->sales_whatsapp,
+                'store_name' => $settings->store_name,
+                'store_email' => $settings->store_email,
+                'store_phone' => $settings->store_phone,
+                'store_whatsapp' => $settings->store_whatsapp,
             ],
             'abandoned_cart_sync_enabled' => $user !== null,
         ]);
