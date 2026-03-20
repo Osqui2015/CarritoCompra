@@ -70,8 +70,8 @@ class AppearanceManager extends Component
             'salesWhatsapp' => ['nullable', 'string', 'max:40'],
             'storeAddress' => ['nullable', 'string', 'max:160'],
             'businessHours' => ['nullable', 'string', 'max:200'],
-            'siteLogo' => ['nullable', 'image', 'max:4096', 'dimensions:min_width=180,min_height=60'],
-            'siteFavicon' => ['nullable', 'image', 'max:2048', 'dimensions:min_width=64,min_height=64'],
+            'siteLogo' => ['nullable', 'mimes:jpeg,png,jpg,svg', 'max:4096', 'dimensions:min_width=180,min_height=60'],
+            'siteFavicon' => ['nullable', 'mimes:jpeg,png,jpg,svg', 'max:2048', 'dimensions:min_width=64,min_height=64'],
             'removeSiteLogo' => ['boolean'],
             'removeSiteFavicon' => ['boolean'],
         ]);
