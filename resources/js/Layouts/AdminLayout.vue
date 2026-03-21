@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import axios from "axios";
@@ -183,6 +184,16 @@ onBeforeUnmount(() => {
                         }"
                     >
                         Stock
+                    </Link>
+                    <Link
+                        :href="route('admin.banners')"
+                        class="rounded-full border border-yellow-600 px-4 py-2 font-semibold text-yellow-700 transition hover:bg-yellow-50"
+                        :class="{
+                            'border-yellow-950 bg-yellow-950 text-white':
+                                route().current('admin.banners'),
+                        }"
+                    >
+                        Banners
                     </Link>
                     <Link
                         :href="route('admin.store-info')"
