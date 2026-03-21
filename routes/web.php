@@ -72,6 +72,9 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->name('admin.')->group(fu
     Route::post('/stock/ajustar', [AdminStockController::class, 'adjust'])->name('stock.adjust');
     Route::post('/stock/umbral', [AdminStockController::class, 'updateThreshold'])->name('stock.threshold');
 
+    // Nueva sección para banners y datos de contacto/redes sociales
+    Route::view('/info-negocio', 'admin.store-info-manager')->name('store-info');
+
     // Ruta de apariencia eliminada para restringir edición de logo/icono/colores
 });
 
