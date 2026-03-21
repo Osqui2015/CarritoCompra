@@ -184,12 +184,6 @@ onBeforeUnmount(() => {
                     >
                         Stock
                     </Link>
-                    <a
-                        :href="route('admin.appearance.index')"
-                        class="rounded-full border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
-                    >
-                        Apariencia
-                    </a>
                     <Link
                         :href="route('storefront')"
                         class="rounded-full border border-emerald-600 px-4 py-2 font-semibold text-emerald-700 transition hover:bg-emerald-50"
