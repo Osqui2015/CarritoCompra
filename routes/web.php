@@ -72,7 +72,7 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->name('admin.')->group(fu
     Route::post('/stock/ajustar', [AdminStockController::class, 'adjust'])->name('stock.adjust');
     Route::post('/stock/umbral', [AdminStockController::class, 'updateThreshold'])->name('stock.threshold');
 
-    Route::view('/apariencia', 'admin.appearance.index')->name('appearance.index');
+    // Ruta de apariencia eliminada para restringir edición de logo/icono/colores
 });
 
 require __DIR__ . '/auth.php';

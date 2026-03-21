@@ -17,10 +17,8 @@
         <div
             class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
             <div class="flex items-center gap-4">
-                @if (!empty($branding['site_logo']))
-                    <img src="{{ $branding['site_logo'] }}" alt="{{ $branding['site_name'] }}"
-                        class="h-12 w-auto rounded-xl object-contain object-center">
-                @endif
+                <img src="{{ asset('branding/logo.svg') }}" alt="Logo empresa"
+                    class="h-12 w-auto rounded-xl object-contain object-center">
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Panel de Administracion
                     </p>

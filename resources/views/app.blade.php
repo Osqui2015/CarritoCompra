@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ $branding['site_name'] ?? config('app.name', 'Laravel') }}</title>
-    @if (!empty($branding['site_favicon']))
-        <link rel="icon" type="image/png" href="{{ $branding['site_favicon'] }}">
-    @endif
+    <link rel="icon" type="image/svg+xml" href="{{ asset('branding/logo.svg') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
