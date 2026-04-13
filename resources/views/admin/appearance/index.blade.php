@@ -56,7 +56,17 @@
     </header>
 
     <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <livewire:admin.store-info-manager />
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-3xl font-bold mt-6">Apariencia y configuración</h1>
+
+            <div class="mt-6">
+                <livewire:admin.store-settings-manager />
+            </div>
+
+            <div class="mt-6">
+                <livewire:admin.hero-banner-manager />
+            </div>
+        </div>
         <div class="my-8"></div>
         <livewire:admin.appearance-manager />
     </main>

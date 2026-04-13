@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductShowController;
 use App\Http\Controllers\ProductSearchController;
 use App\Http\Controllers\StorefrontController;
+use App\Livewire\Seller\SellerDashboard;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -40,7 +41,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::view('/account', 'account.index')->name('account.edit');
+
     Route::post('/carrito/abandono/sync', AbandonedCartSyncController::class)->name('abandoned-carts.sync');
+});
+
+Route::middleware(['auth', 'admin'])->prefix('/seller')->name('seller.')->group(function () {
+    Route::view('/dashboard', 'seller.dashboard')->name('dashboard');
+    Route::get('/orders/{order}', \App\Livewire\Seller\OrderDetailView::class)->name('orders.show');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('/admin')->name('admin.')->group(function () {

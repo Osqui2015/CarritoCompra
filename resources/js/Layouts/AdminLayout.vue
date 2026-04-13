@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import axios from "axios";

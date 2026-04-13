@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CatalogSeeder::class);
         $this->call(CouponSeeder::class);
         $this->call(AdminAndClientSeeder::class);
+        $this->call(ClientTestSeeder::class);
+        $this->call(SellerTestSeeder::class);
         $this->call(AppearanceDemoSeeder::class);
 
         User::query()->updateOrCreate(

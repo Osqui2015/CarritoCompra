@@ -128,10 +128,25 @@ Ese comando inicia servidor Laravel, cola, logs y Vite en paralelo.
 
 ## Credenciales de prueba
 
-Con `php artisan migrate --seed`, se crea un usuario admin de ejemplo:
+Con `php artisan migrate --seed`, se crean los siguientes usuarios de ejemplo:
+
+### Admin
 
 - Email: `test@example.com`
 - Password: `password`
+- Acceso: Panel administrativo completo (`/admin/analitica`)
+
+### Vendedor (Seller)
+
+- Email: `vendedor.test@carrito.local`
+- Password: `VendedorTest123`
+- Acceso: Dashboard exclusivo de vendedor (`/seller/dashboard`) con stock y pedidos
+
+### Cliente (Customer)
+
+- Email: `cliente.test@carrito.local`
+- Password: `ClienteTest123`
+- Acceso: Tienda pública y carrito de compras
 
 ## Rutas principales
 

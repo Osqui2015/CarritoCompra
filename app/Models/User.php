@@ -23,6 +23,8 @@ class User extends Authenticatable
         'email',
         'phone',
         'shipping_address',
+        'avatar_path',
+        'preferences',
         'is_admin',
         'password',
     ];
@@ -46,9 +48,19 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'preferences' => 'array',
             'is_admin' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function getAvatarUrlAttribute(): ?string
+    {
+        if (! $this->avatar_path) {
+            return null;
+        }
+
+        return asset('storage/' . $this->avatar_path);
     }
 
     public function carts(): HasMany
