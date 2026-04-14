@@ -18,6 +18,12 @@ Create distinctive, production-grade frontend interfaces with high design qualit
 
 - `.claude/skills/frontend-design/SKILL.md`
 
+## Laravel Development Patterns
+
+Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps.
+
+- `.claude/skills/laravel-patterns/SKILL.md`
+
 ## Laravel Specialist
 
 Build and configure Laravel 10+ applications, including creating Eloquent models and relationships, implementing Sanctum authentication, configuring Horizon queues, designing RESTful APIs with API resources, and building reactive interfaces with Livewire. Use when creating Laravel models, setting...
@@ -264,5 +270,15 @@ Vue 3 debugging and error handling for runtime errors, warnings, async failures,
 - `.claude/skills/vue-debug-guides/reference/watch-reactive-property-getter.md`: **Impact: HIGH** - Directly watching a property of a reactive object passes a primitive value to `watch()`, not a reactive reference. The watcher will never trigger because primitives are not reactive.
 - `.claude/skills/vue-debug-guides/reference/watcheffect-async-dependency-tracking.md`: **Impact: HIGH** - `watchEffect` automatically tracks reactive dependencies, but only during synchronous execution. Any reactive properties accessed after the first `await` statement will NOT be tracked, and changes to them won't trigger the watcher.
 - `.claude/skills/vue-debug-guides/reference/watcheffect-flush-post-for-refs.md`: **Impact: MEDIUM** - By default, `watchEffect` runs before the DOM is updated. When watching template refs, this means the effect may run with stale or null ref values. Use `flush: 'post'` to ensure the effect runs after DOM updates when refs are current.
+
+## Vue
+
+Vue 3 Composition API, script setup macros, reactivity system, and built-in components. Use when writing Vue SFCs, defineProps/defineEmits/defineModel, watchers, or using Transition/Teleport/Suspense/KeepAlive.
+
+- `.claude/skills/vue/SKILL.md`
+- `.claude/skills/vue/GENERATION.md`
+- `.claude/skills/vue/references/advanced-patterns.md`: Vue 3 built-in components (Transition, Teleport, Suspense, KeepAlive) and advanced directives
+- `.claude/skills/vue/references/core-new-apis.md`: Vue 3 reactivity system, lifecycle hooks, and composable patterns
+- `.claude/skills/vue/references/script-setup-macros.md`: Vue 3 script setup syntax and compiler macros for defining props, emits, models, and more
 
 <!-- autoskills:end -->

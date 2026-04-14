@@ -358,596 +358,724 @@ function secondaryCategoryNames(product: ProductItem): string {
     <Head title="Admin · Productos" />
 
     <AdminLayout>
-        <section class="grid gap-6 xl:grid-cols-[380px_minmax(0,1fr)]">
-            <article
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+        <div class="bg-slate-50 min-h-full py-4 sm:py-6 rounded-3xl">
+            <section
+                class="grid gap-6 xl:grid-cols-[420px_minmax(0,1fr)] md:grid-cols-1"
             >
-                <h2 class="text-xl font-semibold text-slate-950">
-                    {{ editingId ? "Editar producto" : "Nuevo producto" }}
-                </h2>
-                <p class="mt-1 text-sm text-slate-500">
-                    Carga imagen cuadrada (se recorta automaticamente a 500x500
-                    con Spatie Media Library).
-                </p>
+                <article
+                    class="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm"
+                >
+                    <h2 class="text-xl font-semibold text-slate-950">
+                        {{ editingId ? "Editar producto" : "Nuevo producto" }}
+                    </h2>
+                    <p class="mt-1 text-sm text-slate-500">
+                        Carga imagen cuadrada (se recorta automaticamente a
+                        500x500 con Spatie Media Library).
+                    </p>
 
-                <form class="mt-6 space-y-4" @submit.prevent="submit">
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="name"
-                            >Nombre</label
-                        >
-                        <input
-                            id="name"
-                            v-model="form.name"
-                            type="text"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                            required
-                        />
-                        <p
-                            v-if="form.errors.name"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.name }}
-                        </p>
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="slug"
-                            >Slug (opcional)</label
-                        >
-                        <input
-                            id="slug"
-                            v-model="form.slug"
-                            type="text"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                            placeholder="se-genera-automaticamente"
-                        />
-                        <p
-                            v-if="form.errors.slug"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.slug }}
-                        </p>
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="category_id"
-                            >Categoria principal</label
-                        >
-                        <select
-                            id="category_id"
-                            v-model="form.category_id"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                        >
-                            <option value="">Seleccionar</option>
-                            <option
-                                v-for="category in categoryOptions"
-                                :key="category.id"
-                                :value="String(category.id)"
-                            >
-                                {{ category.name }}
-                            </option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="category_name"
-                            >Crear categoria principal al vuelo</label
-                        >
-                        <input
-                            id="category_name"
-                            v-model="form.category_name"
-                            type="text"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                            placeholder="Solo si no existe"
-                        />
-                        <p
-                            v-if="form.errors.category_id"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.category_id }}
-                        </p>
-                        <p
-                            v-if="form.errors.category_name"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.category_name }}
-                        </p>
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="category_ids"
-                            >Categorias secundarias</label
-                        >
-                        <div
-                            id="category_ids"
-                            class="max-h-40 space-y-2 overflow-y-auto rounded-xl border border-slate-300 bg-white p-3"
-                        >
+                    <form class="mt-6 space-y-5" @submit.prevent="submit">
+                        <div>
                             <label
-                                v-for="category in categoryOptions"
-                                :key="`extra-${category.id}`"
-                                class="flex items-center gap-3 rounded-lg px-2 py-1 transition"
-                                :class="
-                                    String(category.id) === form.category_id
-                                        ? 'cursor-not-allowed bg-slate-100 text-slate-400'
-                                        : 'cursor-pointer hover:bg-slate-50'
-                                "
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="name"
+                                >Nombre</label
+                            >
+                            <input
+                                id="name"
+                                v-model="form.name"
+                                type="text"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                required
+                            />
+                            <p
+                                v-if="form.errors.name"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.name }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="slug"
+                                >Slug (opcional)</label
+                            >
+                            <input
+                                id="slug"
+                                v-model="form.slug"
+                                type="text"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                placeholder="se-genera-automaticamente"
+                            />
+                            <p
+                                v-if="form.errors.slug"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.slug }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="category_id"
+                                >Categoria principal</label
+                            >
+                            <select
+                                id="category_id"
+                                v-model="form.category_id"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                            >
+                                <option value="">Seleccionar</option>
+                                <option
+                                    v-for="category in categoryOptions"
+                                    :key="category.id"
+                                    :value="String(category.id)"
+                                >
+                                    {{ category.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-5">
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="category_name"
+                                >Crear categoria principal al vuelo</label
+                            >
+                            <input
+                                id="category_name"
+                                v-model="form.category_name"
+                                type="text"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                placeholder="Solo si no existe"
+                            />
+                            <p
+                                v-if="form.errors.category_id"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.category_id }}
+                            </p>
+                            <p
+                                v-if="form.errors.category_name"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.category_name }}
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-5">
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="category_ids"
+                                >Categorias secundarias</label
+                            >
+                            <div
+                                id="category_ids"
+                                class="max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-300 bg-white p-3"
+                            >
+                                <label
+                                    v-for="category in categoryOptions"
+                                    :key="`extra-${category.id}`"
+                                    class="flex items-center gap-3 rounded-md px-2 py-1.5 transition"
+                                    :class="
+                                        String(category.id) === form.category_id
+                                            ? 'cursor-not-allowed bg-slate-100 text-slate-400'
+                                            : 'cursor-pointer hover:bg-slate-50'
+                                    "
+                                >
+                                    <input
+                                        v-model="form.category_ids"
+                                        type="checkbox"
+                                        :value="String(category.id)"
+                                        :disabled="
+                                            String(category.id) ===
+                                            form.category_id
+                                        "
+                                        class="h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-slate-400"
+                                    />
+                                    <span class="text-sm">{{
+                                        category.name
+                                    }}</span>
+                                </label>
+                                <p
+                                    v-if="!categoryOptions.length"
+                                    class="text-sm text-slate-500"
+                                >
+                                    No hay categorias creadas.
+                                </p>
+                            </div>
+                            <p class="mt-1.5 text-xs text-slate-500">
+                                Marca una o varias subcategorias relacionadas.
+                            </p>
+                            <p
+                                v-if="form.errors.category_ids"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.category_ids }}
+                            </p>
+                            <p
+                                v-if="form.errors['category_ids.0']"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors["category_ids.0"] }}
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-5">
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="secondary_category_name"
+                                >Crear categoria secundaria al vuelo</label
+                            >
+                            <div class="flex items-center gap-2">
+                                <input
+                                    id="secondary_category_name"
+                                    v-model="form.secondary_category_name"
+                                    type="text"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                    placeholder="Ej: Gaming"
+                                    @keydown.enter.prevent="
+                                        loadSecondaryCategory
+                                    "
+                                />
+                                <button
+                                    v-if="shouldShowSecondaryLoadButton"
+                                    type="button"
+                                    class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                                    :disabled="
+                                        secondaryCategoryStatus.loading ||
+                                        !form.secondary_category_name.trim()
+                                    "
+                                    @click="loadSecondaryCategory"
+                                >
+                                    {{
+                                        secondaryCategoryStatus.loading
+                                            ? "Cargando..."
+                                            : "Cargar"
+                                    }}
+                                </button>
+                            </div>
+                            <p class="mt-1.5 text-xs text-slate-500">
+                                Si no existe, se crea y se marca
+                                automaticamente.
+                            </p>
+                            <p
+                                v-if="secondaryCategoryStatus.message"
+                                class="mt-1 text-xs text-emerald-600"
+                            >
+                                {{ secondaryCategoryStatus.message }}
+                            </p>
+                            <p
+                                v-if="secondaryCategoryStatus.error"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ secondaryCategoryStatus.error }}
+                            </p>
+                            <p
+                                v-if="form.errors.secondary_category_name"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.secondary_category_name }}
+                            </p>
+                        </div>
+
+                        <div
+                            class="grid gap-4 sm:grid-cols-2 border-t border-slate-200 pt-5"
+                        >
+                            <div>
+                                <label
+                                    class="mb-2 block text-sm font-medium text-slate-700"
+                                    for="price"
+                                    >Precio</label
+                                >
+                                <input
+                                    id="price"
+                                    v-model="form.price"
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                    required
+                                />
+                                <p
+                                    v-if="form.errors.price"
+                                    class="mt-1 text-xs text-rose-600"
+                                >
+                                    {{ form.errors.price }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <label
+                                    class="mb-2 block text-sm font-medium text-slate-700"
+                                    for="stock"
+                                    >Cantidad en stock</label
+                                >
+                                <input
+                                    id="stock"
+                                    v-model.number="form.stock"
+                                    type="number"
+                                    min="0"
+                                    step="1"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                    required
+                                />
+                                <p class="mt-1.5 text-xs text-slate-500">
+                                    Nivel visible para cliente:
+                                    <span class="font-semibold">{{
+                                        stockLevelLabelByReference(
+                                            form.stock,
+                                            editingId
+                                                ? Math.max(
+                                                      editingStockReference,
+                                                      1,
+                                                  )
+                                                : Math.max(form.stock, 1),
+                                        )
+                                    }}</span>
+                                </p>
+                                <p
+                                    v-if="form.errors.stock"
+                                    class="mt-1 text-xs text-rose-600"
+                                >
+                                    {{ form.errors.stock }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="hero_tag"
+                                >Etiqueta destacada</label
+                            >
+                            <input
+                                id="hero_tag"
+                                v-model="form.hero_tag"
+                                type="text"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                                placeholder="Ej: Producto estrella"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="description"
+                                >Descripcion</label
+                            >
+                            <textarea
+                                id="description"
+                                v-model="form.description"
+                                rows="3"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                class="mb-2 block text-sm font-medium text-slate-700"
+                                for="image"
+                                >Imagen</label
+                            >
+                            <input
+                                id="image"
+                                type="file"
+                                accept="image/*"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-slate-100 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-slate-700 hover:file:bg-slate-200"
+                                @change="onFileChange"
+                            />
+                            <p
+                                v-if="form.errors.image"
+                                class="mt-1 text-xs text-rose-600"
+                            >
+                                {{ form.errors.image }}
+                            </p>
+                            <div
+                                v-if="editingImageUrl"
+                                class="mt-3 overflow-hidden rounded-lg border border-slate-200"
+                            >
+                                <img
+                                    :src="editingImageUrl"
+                                    alt="Preview"
+                                    class="aspect-square w-24 object-cover"
+                                />
+                            </div>
+                            <label
+                                v-if="editingId"
+                                class="mt-3 inline-flex items-center gap-2 text-sm text-slate-600"
                             >
                                 <input
-                                    v-model="form.category_ids"
+                                    v-model="form.remove_image"
                                     type="checkbox"
-                                    :value="String(category.id)"
-                                    :disabled="
-                                        String(category.id) === form.category_id
-                                    "
-                                    class="h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-slate-400"
+                                    class="rounded border-slate-300"
                                 />
-                                <span class="text-sm">{{ category.name }}</span>
+                                Quitar imagen actual
                             </label>
-                            <p
-                                v-if="!categoryOptions.length"
-                                class="text-sm text-slate-500"
-                            >
-                                No hay categorias creadas.
-                            </p>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-500">
-                            Marca una o varias subcategorias relacionadas.
-                        </p>
-                        <p
-                            v-if="form.errors.category_ids"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.category_ids }}
-                        </p>
-                        <p
-                            v-if="form.errors['category_ids.0']"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors["category_ids.0"] }}
-                        </p>
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="secondary_category_name"
-                            >Crear categoria secundaria al vuelo</label
-                        >
-                        <div class="flex items-center gap-2">
-                            <input
-                                id="secondary_category_name"
-                                v-model="form.secondary_category_name"
-                                type="text"
-                                class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                                placeholder="Ej: Gaming"
-                                @keydown.enter.prevent="loadSecondaryCategory"
-                            />
-                            <button
-                                v-if="shouldShowSecondaryLoadButton"
-                                type="button"
-                                class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
-                                :disabled="
-                                    secondaryCategoryStatus.loading ||
-                                    !form.secondary_category_name.trim()
-                                "
-                                @click="loadSecondaryCategory"
-                            >
-                                {{
-                                    secondaryCategoryStatus.loading
-                                        ? "Cargando..."
-                                        : "Cargar"
-                                }}
-                            </button>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-500">
-                            Si no existe, se crea y se marca automaticamente.
-                        </p>
-                        <p
-                            v-if="secondaryCategoryStatus.message"
-                            class="mt-1 text-xs text-emerald-600"
-                        >
-                            {{ secondaryCategoryStatus.message }}
-                        </p>
-                        <p
-                            v-if="secondaryCategoryStatus.error"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ secondaryCategoryStatus.error }}
-                        </p>
-                        <p
-                            v-if="form.errors.secondary_category_name"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.secondary_category_name }}
-                        </p>
-                    </div>
-
-                    <div class="grid gap-4 sm:grid-cols-2">
-                        <div>
-                            <label
-                                class="mb-2 block text-sm font-semibold text-slate-700"
-                                for="price"
-                                >Precio</label
-                            >
-                            <input
-                                id="price"
-                                v-model="form.price"
-                                type="number"
-                                min="0"
-                                step="0.01"
-                                class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                                required
-                            />
-                            <p
-                                v-if="form.errors.price"
-                                class="mt-1 text-xs text-rose-600"
-                            >
-                                {{ form.errors.price }}
-                            </p>
                         </div>
 
-                        <div>
-                            <label
-                                class="mb-2 block text-sm font-semibold text-slate-700"
-                                for="stock"
-                                >Cantidad en stock</label
-                            >
-                            <input
-                                id="stock"
-                                v-model.number="form.stock"
-                                type="number"
-                                min="0"
-                                step="1"
-                                class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                                required
-                            />
-                            <p class="mt-1 text-xs text-slate-500">
-                                Nivel visible para cliente:
-                                <span class="font-semibold">{{
-                                    stockLevelLabelByReference(
-                                        form.stock,
-                                        editingId
-                                            ? Math.max(editingStockReference, 1)
-                                            : Math.max(form.stock, 1),
-                                    )
-                                }}</span>
-                            </p>
-                            <p
-                                v-if="form.errors.stock"
-                                class="mt-1 text-xs text-rose-600"
-                            >
-                                {{ form.errors.stock }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div>
                         <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="hero_tag"
-                            >Etiqueta destacada</label
-                        >
-                        <input
-                            id="hero_tag"
-                            v-model="form.hero_tag"
-                            type="text"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                            placeholder="Ej: Producto estrella"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="description"
-                            >Descripcion</label
-                        >
-                        <textarea
-                            id="description"
-                            v-model="form.description"
-                            rows="3"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            class="mb-2 block text-sm font-semibold text-slate-700"
-                            for="image"
-                            >Imagen</label
-                        >
-                        <input
-                            id="image"
-                            type="file"
-                            accept="image/*"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"
-                            @change="onFileChange"
-                        />
-                        <p
-                            v-if="form.errors.image"
-                            class="mt-1 text-xs text-rose-600"
-                        >
-                            {{ form.errors.image }}
-                        </p>
-                        <div
-                            v-if="editingImageUrl"
-                            class="mt-3 overflow-hidden rounded-xl border border-slate-200"
-                        >
-                            <img
-                                :src="editingImageUrl"
-                                alt="Preview"
-                                class="aspect-square w-24 object-cover"
-                            />
-                        </div>
-                        <label
-                            v-if="editingId"
-                            class="mt-3 inline-flex items-center gap-2 text-sm text-slate-600"
+                            class="inline-flex items-center gap-2 text-sm text-slate-700"
                         >
                             <input
-                                v-model="form.remove_image"
+                                v-model="form.is_active"
                                 type="checkbox"
                                 class="rounded border-slate-300"
                             />
-                            Quitar imagen actual
+                            Producto activo
                         </label>
-                    </div>
 
-                    <label
-                        class="inline-flex items-center gap-2 text-sm text-slate-700"
-                    >
-                        <input
-                            v-model="form.is_active"
-                            type="checkbox"
-                            class="rounded border-slate-300"
-                        />
-                        Producto activo
-                    </label>
-
-                    <div class="flex items-center gap-3 pt-2">
-                        <button
-                            type="submit"
-                            class="rounded-full bg-slate-950 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:opacity-60"
-                            :disabled="form.processing"
+                        <div
+                            class="flex items-center gap-3 pt-2 border-t border-slate-200"
                         >
-                            {{
-                                form.processing
-                                    ? "Guardando..."
-                                    : editingId
-                                      ? "Actualizar"
-                                      : "Crear"
-                            }}
-                        </button>
-                        <button
-                            v-if="editingId"
-                            type="button"
-                            class="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700"
-                            @click="resetForm"
-                        >
-                            Cancelar edicion
-                        </button>
-                    </div>
-                </form>
-            </article>
-
-            <article
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-                <div
-                    class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
-                >
-                    <div>
-                        <h2 class="text-xl font-semibold text-slate-950">
-                            Catalogo de productos
-                        </h2>
-                        <p class="mt-1 text-sm text-slate-500">
-                            {{ products.length }} resultados
-                        </p>
-                    </div>
-
-                    <form
-                        class="grid gap-3 sm:grid-cols-3"
-                        @submit.prevent="applyFilters"
-                    >
-                        <input
-                            v-model="filterForm.search"
-                            type="text"
-                            placeholder="Buscar por nombre o slug"
-                            class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
-                        />
-                        <select
-                            v-model="filterForm.category_id"
-                            class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
-                        >
-                            <option value="">Todas</option>
-                            <option
-                                v-for="category in categoryOptions"
-                                :key="category.id"
-                                :value="String(category.id)"
-                            >
-                                {{ category.name }}
-                            </option>
-                        </select>
-                        <select
-                            v-model="filterForm.status"
-                            class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
-                        >
-                            <option value="all">Todos</option>
-                            <option value="active">Activos</option>
-                            <option value="inactive">Inactivos</option>
-                        </select>
-                        <div class="sm:col-span-3 flex gap-2">
                             <button
                                 type="submit"
-                                class="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white"
+                                class="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:opacity-60"
+                                :disabled="form.processing"
                             >
-                                Filtrar
+                                {{
+                                    form.processing
+                                        ? "Guardando..."
+                                        : editingId
+                                          ? "Actualizar"
+                                          : "Crear"
+                                }}
                             </button>
                             <button
+                                v-if="editingId"
                                 type="button"
-                                class="rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-700"
-                                @click="resetFilters"
+                                class="rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+                                @click="resetForm"
                             >
-                                Limpiar
+                                Cancelar edicion
                             </button>
                         </div>
                     </form>
-                </div>
+                </article>
 
-                <div
-                    class="mt-6 overflow-hidden rounded-2xl border border-slate-200"
+                <article
+                    class="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm"
                 >
-                    <table class="min-w-full divide-y divide-slate-200 text-sm">
-                        <thead
-                            class="bg-slate-50 text-left text-xs uppercase tracking-[0.2em] text-slate-500"
+                    <div
+                        class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+                    >
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-950">
+                                Catalogo de productos
+                            </h2>
+                            <p class="mt-1 text-sm text-slate-500">
+                                {{ products.length }} resultados
+                            </p>
+                        </div>
+                        <form
+                            class="grid gap-3 sm:grid-cols-3"
+                            @submit.prevent="applyFilters"
                         >
-                            <tr>
-                                <th class="px-4 py-3">Producto</th>
-                                <th class="px-4 py-3">Categoria</th>
-                                <th class="px-4 py-3">Precio</th>
-                                <th class="px-4 py-3">Stock</th>
-                                <th class="px-4 py-3">Estado</th>
-                                <th class="px-4 py-3">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-200 bg-white">
-                            <tr v-for="product in products" :key="product.id">
-                                <td class="px-4 py-3">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="h-14 w-14 overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
-                                        >
-                                            <img
-                                                v-if="product.image_url"
-                                                :src="product.image_url"
-                                                alt="Imagen"
-                                                class="h-full w-full object-cover"
-                                            />
+                            <input
+                                v-model="filterForm.search"
+                                type="text"
+                                placeholder="Buscar por nombre o slug"
+                                class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                            /><select
+                                v-model="filterForm.category_id"
+                                class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                            >
+                                <option value="">Todas</option>
+                                <option
+                                    v-for="category in categoryOptions"
+                                    :key="category.id"
+                                    :value="String(category.id)"
+                                >
+                                    {{ category.name }}
+                                </option></select
+                            ><select
+                                v-model="filterForm.status"
+                                class="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+                            >
+                                <option value="all">Todos</option>
+                                <option value="active">Activos</option>
+                                <option value="inactive">Inactivos</option>
+                            </select>
+                            <div class="sm:col-span-3 flex gap-2">
+                                <button
+                                    type="submit"
+                                    class="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white"
+                                >
+                                    Filtrar
+                                </button>
+                                <button
+                                    type="button"
+                                    class="rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-700"
+                                    @click="resetFilters"
+                                >
+                                    Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 hidden md:block"
+                    >
+                        <table
+                            class="min-w-full divide-y divide-slate-200 text-sm whitespace-nowrap"
+                        >
+                            <thead
+                                class="bg-slate-50 text-left text-xs uppercase tracking-[0.2em] text-slate-500"
+                            >
+                                <tr>
+                                    <th class="px-4 py-3">Producto</th>
+                                    <th class="px-4 py-3">Categoria</th>
+                                    <th class="px-4 py-3">Precio</th>
+                                    <th class="px-4 py-3">Stock</th>
+                                    <th class="px-4 py-3">Estado</th>
+                                    <th class="px-4 py-3">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 bg-white">
+                                <tr
+                                    v-for="product in products"
+                                    :key="product.id"
+                                >
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center gap-3">
                                             <div
-                                                v-else
-                                                class="flex h-full w-full items-center justify-center text-lg font-semibold text-slate-400"
+                                                class="h-14 w-14 overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
                                             >
-                                                {{ product.name.slice(0, 1) }}
+                                                <img
+                                                    v-if="product.image_url"
+                                                    :src="product.image_url"
+                                                    alt="Imagen"
+                                                    class="h-full w-full object-cover"
+                                                />
+                                                <div
+                                                    v-else
+                                                    class="flex h-full w-full items-center justify-center text-lg font-semibold text-slate-400"
+                                                >
+                                                    {{
+                                                        product.name.slice(0, 1)
+                                                    }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p
+                                                    class="font-semibold text-slate-900"
+                                                >
+                                                    {{ product.name }}
+                                                </p>
+                                                <p
+                                                    class="text-xs text-slate-500"
+                                                >
+                                                    {{ product.slug }}
+                                                </p>
                                             </div>
                                         </div>
-                                        <div>
-                                            <p
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span
                                                 class="font-semibold text-slate-900"
                                             >
-                                                {{ product.name }}
-                                            </p>
-                                            <p class="text-xs text-slate-500">
-                                                {{ product.slug }}
-                                            </p>
+                                                Principal:
+                                                {{
+                                                    product.category_name ||
+                                                    "Sin categoria"
+                                                }}</span
+                                            ><span
+                                                class="text-xs text-slate-500"
+                                            >
+                                                Secundarias:
+                                                {{
+                                                    secondaryCategoryNames(
+                                                        product,
+                                                    )
+                                                }}</span
+                                            >
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-3">
-                                    <div class="flex flex-col gap-1">
-                                        <span
-                                            class="font-semibold text-slate-900"
-                                        >
-                                            Principal:
-                                            {{
-                                                product.category_name ||
-                                                "Sin categoria"
-                                            }}
-                                        </span>
-                                        <span class="text-xs text-slate-500">
-                                            Secundarias:
-                                            {{
-                                                secondaryCategoryNames(product)
-                                            }}
-                                        </span>
-                                    </div>
-                                </td>
-                                <td
-                                    class="px-4 py-3 font-semibold text-slate-900"
-                                >
-                                    ${{ product.price.toFixed(2) }}
-                                </td>
-                                <td class="px-4 py-3">
-                                    <div class="flex flex-col gap-1">
-                                        <span
-                                            class="font-semibold text-slate-900"
-                                        >
-                                            {{ product.stock }} /
-                                            {{ product.stock_reference }} u.
-                                        </span>
-                                        <span
-                                            class="inline-flex w-fit rounded-full px-2 py-1 text-[11px] font-semibold"
-                                            :class="
-                                                stockLevelClassByReference(
-                                                    product.stock,
-                                                    product.stock_reference,
-                                                )
-                                            "
-                                        >
-                                            {{
-                                                stockLevelLabelByReference(
-                                                    product.stock,
-                                                    product.stock_reference,
-                                                )
-                                            }}
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-3">
-                                    <span
-                                        class="rounded-full px-3 py-1 text-xs font-semibold"
-                                        :class="
-                                            product.is_active
-                                                ? 'bg-emerald-100 text-emerald-700'
-                                                : 'bg-rose-100 text-rose-700'
-                                        "
+                                    </td>
+                                    <td
+                                        class="px-4 py-3 font-semibold text-slate-900"
                                     >
-                                        {{
-                                            product.is_active
-                                                ? "Activo"
-                                                : "Inactivo"
-                                        }}
-                                    </span>
-                                </td>
-                                <td class="px-4 py-3">
-                                    <div class="flex gap-2">
-                                        <button
-                                            type="button"
-                                            class="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700"
-                                            @click="editProduct(product)"
+                                        ${{ product.price.toFixed(2) }}
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span
+                                                class="font-semibold text-slate-900"
+                                                >{{ product.stock }} /
+                                                {{ product.stock_reference }}
+                                                u. </span
+                                            ><span
+                                                class="inline-flex w-fit rounded-md px-2 py-1 text-[11px] font-semibold"
+                                                :class="
+                                                    stockLevelClassByReference(
+                                                        product.stock,
+                                                        product.stock_reference,
+                                                    )
+                                                "
+                                                >{{
+                                                    stockLevelLabelByReference(
+                                                        product.stock,
+                                                        product.stock_reference,
+                                                    )
+                                                }}</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span
+                                            class="rounded-full px-3 py-1 text-xs font-semibold"
+                                            :class="
+                                                product.is_active
+                                                    ? 'bg-emerald-100 text-emerald-700'
+                                                    : 'bg-rose-100 text-rose-700'
+                                            "
+                                            >{{
+                                                product.is_active
+                                                    ? "Activo"
+                                                    : "Inactivo"
+                                            }}</span
                                         >
-                                            Editar
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="rounded-full border border-rose-300 px-3 py-1 text-xs font-semibold text-rose-700"
-                                            @click="destroyProduct(product.id)"
-                                        >
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr v-if="!products.length">
-                                <td
-                                    colspan="6"
-                                    class="px-4 py-6 text-center text-slate-500"
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex gap-2">
+                                            <button
+                                                type="button"
+                                                class="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700"
+                                                @click="editProduct(product)"
+                                            >
+                                                Editar
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="rounded-full border border-rose-300 px-3 py-1 text-xs font-semibold text-rose-700"
+                                                @click="
+                                                    destroyProduct(product.id)
+                                                "
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr v-if="!products.length">
+                                    <td
+                                        colspan="6"
+                                        class="px-4 py-12 text-center text-slate-500"
+                                    >
+                                        No hay productos en el catalogo.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Cards solo visible en móvil -->
+                    <div class="mt-6 flex flex-col gap-4 md:hidden">
+                        <div
+                            v-for="product in products"
+                            :key="product.id"
+                            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100 flex items-center justify-center text-lg font-semibold text-slate-400"
                                 >
-                                    No hay productos para mostrar.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-        </section>
+                                    <img
+                                        v-if="product.image_url"
+                                        :src="product.image_url"
+                                        alt="Imagen"
+                                        class="h-full w-full object-cover"
+                                    />
+                                    <span v-else>{{
+                                        product.name.slice(0, 1)
+                                    }}</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-900">
+                                        {{ product.name }}
+                                    </p>
+                                    <p class="text-xs text-slate-500">
+                                        {{ product.slug }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-xs mb-2">
+                                <span class="font-semibold text-slate-900"
+                                    >${{ product.price.toFixed(2) }}</span
+                                >
+                                <span class="font-semibold text-slate-900"
+                                    >Stock: {{ product.stock }} /
+                                    {{ product.stock_reference }} u.</span
+                                >
+                                <span
+                                    class="inline-flex rounded-md px-2 py-1 font-semibold text-xs"
+                                    :class="
+                                        stockLevelClassByReference(
+                                            product.stock,
+                                            product.stock_reference,
+                                        )
+                                    "
+                                    >{{
+                                        stockLevelLabelByReference(
+                                            product.stock,
+                                            product.stock_reference,
+                                        )
+                                    }}</span
+                                >
+                                <span
+                                    class="rounded-full px-3 py-1 font-semibold text-xs"
+                                    :class="
+                                        product.is_active
+                                            ? 'bg-emerald-100 text-emerald-700'
+                                            : 'bg-rose-100 text-rose-700'
+                                    "
+                                    >{{
+                                        product.is_active
+                                            ? "Activo"
+                                            : "Inactivo"
+                                    }}</span
+                                >
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-xs mb-2">
+                                <span class="font-semibold text-slate-900"
+                                    >Principal:
+                                    {{
+                                        product.category_name || "Sin categoria"
+                                    }}</span
+                                >
+                                <span class="text-slate-500"
+                                    >Secundarias:
+                                    {{ secondaryCategoryNames(product) }}</span
+                                >
+                            </div>
+                            <div class="flex gap-2 mt-2">
+                                <button
+                                    type="button"
+                                    class="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700"
+                                    @click="editProduct(product)"
+                                >
+                                    Editar
+                                </button>
+                                <button
+                                    type="button"
+                                    class="rounded-full border border-rose-300 px-3 py-1 text-xs font-semibold text-rose-700"
+                                    @click="destroyProduct(product.id)"
+                                >
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            v-if="!products.length"
+                            class="text-center text-slate-500 py-8"
+                        >
+                            No hay productos en el catálogo.
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
     </AdminLayout>
 </template>

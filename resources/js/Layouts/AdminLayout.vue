@@ -223,7 +223,7 @@ onBeforeUnmount(() => {
             </div>
         </header>
 
-        <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <main>
             <div
                 v-if="flash.success"
                 class="mb-5 rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
@@ -236,18 +236,9 @@ onBeforeUnmount(() => {
             >
                 {{ flash.error }}
             </div>
-
-            <div
-                class="mb-6 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-600"
-            >
-                Sesion:
-                <span class="font-semibold text-slate-900">{{
-                    user?.name
-                }}</span>
-                ({{ user?.email }})
+            <div class="">
+                <slot />
             </div>
-
-            <slot />
         </main>
 
         <div
