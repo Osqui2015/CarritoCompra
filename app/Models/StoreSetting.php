@@ -54,6 +54,15 @@ class StoreSetting extends Model implements HasMedia
                 'hero_banner_subtitle' => 'Ofertas mayoristas para abastecer tu negocio.',
                 'hero_banner_link_type' => 'url',
                 'hero_banner_link_value' => '/',
+                'store_name' => 'Nombre del Negocio',
+                'store_email' => 'correo@ejemplo.com',
+                'store_phone' => '1234567890',
+                'store_whatsapp' => '1234567890',
+                'store_address' => 'Dirección del negocio',
+                'facebook_url' => 'https://facebook.com/tuempresa',
+                'instagram_url' => 'https://instagram.com/tuempresa',
+                'tiktok_url' => 'https://tiktok.com/@tuempresa',
+                'youtube_url' => 'https://youtube.com/tuempresa',
             ],
         );
     }
