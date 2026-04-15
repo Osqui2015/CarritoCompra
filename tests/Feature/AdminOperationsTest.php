@@ -10,6 +10,7 @@ use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\StockMovement;
+use App\Models\StoreSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -29,7 +30,7 @@ class AdminOperationsTest extends TestCase
     $this->actingAs($admin)->get(route('admin.dashboard'))->assertOk();
     $this->actingAs($admin)->get(route('admin.abandoned-carts.index'))->assertOk();
     $this->actingAs($admin)->get(route('admin.stock.index'))->assertOk();
-    $this->actingAs($admin)->get(route('admin.appearance.index'))->assertOk();
+    $this->actingAs($admin)->get(route('admin.store-info'))->assertOk();
   }
 
   public function test_reminding_an_abandoned_cart_creates_a_single_use_coupon(): void
@@ -191,6 +192,40 @@ class AdminOperationsTest extends TestCase
       'type' => Banner::TYPE_MAIN_LARGE,
       'is_active' => true,
     ]);
+  }
+
+  public function test_admin_can_update_store_information_from_the_page(): void
+  {
+    $admin = User::factory()->create([
+      'is_admin' => true,
+    ]);
+
+    $this->actingAs($admin)
+      ->put(route('admin.store-info.update'), [
+        'store_name' => 'Tienda Demo',
+        'store_email' => 'hola@tiendademo.com',
+        'store_phone' => '111222333',
+        'store_whatsapp' => '111222333',
+        'store_address' => 'Av. Siempre Viva 123',
+        'facebook_url' => 'https://facebook.com/tiendademo',
+        'instagram_url' => 'https://instagram.com/tiendademo',
+        'tiktok_url' => 'https://tiktok.com/@tiendademo',
+        'youtube_url' => 'https://youtube.com/tiendademo',
+      ])
+      ->assertSessionHasNoErrors()
+      ->assertRedirect();
+
+    $settings = StoreSetting::current();
+
+    $this->assertSame('Tienda Demo', $settings->store_name);
+    $this->assertSame('hola@tiendademo.com', $settings->store_email);
+    $this->assertSame('111222333', $settings->store_phone);
+    $this->assertSame('111222333', $settings->store_whatsapp);
+    $this->assertSame('Av. Siempre Viva 123', $settings->store_address);
+    $this->assertSame('https://facebook.com/tiendademo', $settings->facebook_url);
+    $this->assertSame('https://instagram.com/tiendademo', $settings->instagram_url);
+    $this->assertSame('https://tiktok.com/@tiendademo', $settings->tiktok_url);
+    $this->assertSame('https://youtube.com/tiendademo', $settings->youtube_url);
   }
 
   public function test_admin_can_create_product_with_checked_and_new_secondary_category(): void

@@ -4,6 +4,7 @@ use App\Http\Controllers\AbandonedCartSyncController;
 use App\Http\Controllers\Admin\AbandonedCartController as AdminAbandonedCartController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\CouponController as AdminCouponController;
+use App\Http\Controllers\Admin\StoreInfoController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\StockController as AdminStockController;
@@ -82,8 +83,8 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->name('admin.')->group(fu
 
     // Sección de banners (restaurada, sin logo/favicon)
     Route::get('/banners', \App\Livewire\Admin\AppearanceManager::class)->name('banners');
-    // Info negocio y redes sociales
-    Route::view('/info-negocio', 'admin.store-info-manager')->name('store-info');
+    Route::get('/info-negocio', [StoreInfoController::class, 'index'])->name('store-info');
+    Route::put('/info-negocio', [StoreInfoController::class, 'update'])->name('store-info.update');
 
     // Ruta de apariencia eliminada para restringir edición de logo/icono/colores
 });
