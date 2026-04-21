@@ -6,7 +6,7 @@ import type { PageProps } from "@/types";
 const page = usePage<PageProps>();
 const logoUrl = computed(() => page.props.branding?.site_logo || null);
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 </script>
 
@@ -23,3 +23,4 @@ const siteName = computed(
         />
     </svg>
 </template>
+

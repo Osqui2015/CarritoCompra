@@ -48,7 +48,8 @@
 
         <div class="mt-8">
             <button type="submit"
-                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-semibold">Guardar</button>
+                class="bg-zinc-600 text-white px-6 py-2 rounded hover:bg-zinc-700 font-semibold">Guardar</button>
         </div>
     </form>
 </div>
+

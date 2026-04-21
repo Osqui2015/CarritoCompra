@@ -248,7 +248,7 @@ function submit(): void {
                     />
                     <div
                         v-else
-                        class="h-52 bg-gradient-to-br from-cyan-200 via-sky-100 to-orange-100"
+                        class="h-52 bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-100"
                     ></div>
                 </div>
 
@@ -290,3 +290,5 @@ function submit(): void {
         </section>
     </AdminLayout>
 </template>
+
+

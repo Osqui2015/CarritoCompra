@@ -312,19 +312,19 @@ onBeforeUnmount(() => {
                 </article>
 
                 <article
-                    class="rounded-2xl border border-amber-200 bg-amber-50 p-5 shadow-sm"
+                    class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 shadow-sm"
                 >
                     <p
-                        class="text-xs uppercase tracking-[0.2em] text-amber-700"
+                        class="text-xs uppercase tracking-[0.2em] text-zinc-700"
                     >
                         Carritos abandonados
                     </p>
-                    <p class="mt-3 text-3xl font-semibold text-amber-900">
+                    <p class="mt-3 text-3xl font-semibold text-zinc-900">
                         {{ summary.abandoned_open_count }}
                     </p>
                     <Link
                         :href="route('admin.abandoned-carts.index')"
-                        class="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.08em] text-amber-800 underline"
+                        class="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.08em] text-zinc-800 underline"
                     >
                         Ver recuperacion
                     </Link>
@@ -523,3 +523,5 @@ onBeforeUnmount(() => {
         </section>
     </AdminLayout>
 </template>
+
+

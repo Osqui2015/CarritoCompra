@@ -35,7 +35,7 @@ const loginForm = reactive({
 let cartCountInterval: number | null = null;
 
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 const siteLogoUrl = computed(() => page.props.branding?.site_logo || null);
 
@@ -206,7 +206,7 @@ onBeforeUnmount(() => {
                 </div>
                 <div>
                     <p
-                        class="text-xs font-semibold uppercase tracking-[0.26em] text-orange-500"
+                        class="text-xs font-semibold uppercase tracking-[0.26em] text-zinc-500"
                     >
                         Mayorista
                     </p>
@@ -243,7 +243,7 @@ onBeforeUnmount(() => {
                         $page.props.auth.user && $page.props.auth.user.is_admin
                     "
                     :href="route('admin.dashboard')"
-                    class="rounded-full border border-orange-300 px-4 py-2 text-sm font-semibold text-orange-700 transition hover:bg-orange-50"
+                    class="rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50"
                 >
                     Admin
                 </Link>
@@ -311,7 +311,7 @@ onBeforeUnmount(() => {
                         $page.props.auth.user && $page.props.auth.user.is_admin
                     "
                     :href="route('admin.dashboard')"
-                    class="col-span-2 rounded-full border border-orange-300 px-4 py-2 text-center text-sm font-semibold text-orange-700"
+                    class="col-span-2 rounded-full border border-zinc-300 px-4 py-2 text-center text-sm font-semibold text-zinc-700"
                 >
                     Admin
                 </Link>
@@ -398,7 +398,7 @@ onBeforeUnmount(() => {
             <div class="flex items-start justify-between gap-4">
                 <div>
                     <p
-                        class="text-xs font-semibold uppercase tracking-[0.18em] text-orange-500"
+                        class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
                     >
                         Bienvenido
                     </p>
@@ -499,3 +499,5 @@ onBeforeUnmount(() => {
         </article>
     </div>
 </template>
+
+

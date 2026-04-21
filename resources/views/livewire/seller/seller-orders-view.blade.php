@@ -62,7 +62,7 @@
 
                                 @case('confirmed')
                                     <span
-                                        class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+                                        class="inline-flex items-center rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700">
                                         Confirmado
                                     </span>
                                 @break
@@ -104,3 +104,5 @@
             {{ $orders->links() }}
         </div>
     </div>
+
+

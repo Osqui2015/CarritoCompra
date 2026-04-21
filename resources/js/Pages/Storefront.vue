@@ -321,7 +321,7 @@ const totalCents = computed(() =>
 );
 
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 
 const siteLogoUrl = computed(() => page.props.branding?.site_logo || null);
@@ -379,11 +379,11 @@ function stockBadgeClass(product: FeaturedProduct): string {
     const ratio = stockRatio(product);
 
     if (ratio < 0.3) {
-        return "bg-amber-100 text-amber-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     if (ratio < 0.7) {
-        return "bg-sky-100 text-sky-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     return "bg-emerald-100 text-emerald-700";
@@ -1021,7 +1021,7 @@ onBeforeUnmount(() => {
                         </div>
                         <div>
                             <p
-                                class="text-xs font-semibold uppercase tracking-[0.26em] text-orange-500"
+                                class="text-xs font-semibold uppercase tracking-[0.26em] text-zinc-500"
                             >
                                 Mayorista
                             </p>
@@ -1061,7 +1061,7 @@ onBeforeUnmount(() => {
                                 $page.props.auth.user.is_admin
                             "
                             :href="route('admin.dashboard')"
-                            class="rounded-full border border-orange-300 px-4 py-2 text-sm font-semibold text-orange-700 transition hover:bg-orange-50"
+                            class="rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50"
                         >
                             Admin
                         </Link>
@@ -1261,7 +1261,7 @@ onBeforeUnmount(() => {
                                     </a>
                                     <a
                                         :href="route('cart.view')"
-                                        class="rounded-xl bg-orange-500 px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-orange-600"
+                                        class="rounded-xl bg-zinc-500 px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-zinc-600"
                                         @click="isCartDropdownOpen = false"
                                     >
                                         Finalizar compra
@@ -1324,7 +1324,7 @@ onBeforeUnmount(() => {
                                 $page.props.auth.user.is_admin
                             "
                             :href="route('admin.dashboard')"
-                            class="col-span-2 rounded-full border border-orange-300 px-4 py-2 text-center text-sm font-semibold text-orange-700"
+                            class="col-span-2 rounded-full border border-zinc-300 px-4 py-2 text-center text-sm font-semibold text-zinc-700"
                         >
                             Admin
                         </Link>
@@ -1411,7 +1411,7 @@ onBeforeUnmount(() => {
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p
-                                class="text-xs font-semibold uppercase tracking-[0.18em] text-orange-500"
+                                class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
                             >
                                 Bienvenido
                             </p>
@@ -1545,7 +1545,7 @@ onBeforeUnmount(() => {
                 class="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_360px]"
             >
                 <article
-                    class="animate-rise relative overflow-hidden rounded-3xl border border-cyan-200 bg-gradient-to-br from-cyan-200 via-sky-100 to-blue-100 p-7 shadow-[0_25px_60px_rgba(2,132,199,0.22)]"
+                    class="animate-rise relative overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-100 p-7 shadow-[0_25px_60px_rgba(24,24,27,0.25)]"
                 >
                     <img
                         v-if="
@@ -1567,7 +1567,7 @@ onBeforeUnmount(() => {
                     <div class="absolute inset-0 bg-white/55"></div>
                     <div class="relative z-10">
                         <p
-                            class="inline-flex rounded-full bg-orange-500 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white"
+                            class="inline-flex rounded-full bg-zinc-500 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white"
                         >
                             Temporada 2026
                         </p>
@@ -1595,7 +1595,7 @@ onBeforeUnmount(() => {
                                 appearance.hero_banner_link_url ||
                                 '#productos-destacados'
                             "
-                            class="mt-7 inline-flex rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600"
+                            class="mt-7 inline-flex rounded-full bg-zinc-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600"
                         >
                             {{ promotions[0]?.cta || "Ver ofertas" }}
                         </a>
@@ -1629,7 +1629,7 @@ onBeforeUnmount(() => {
                                 ? 'border-slate-200 bg-slate-950'
                                 : index === 0
                                   ? 'border-slate-200 bg-slate-950'
-                                  : 'border-orange-300 bg-orange-500'
+                                  : 'border-zinc-300 bg-zinc-500'
                         "
                     >
                         <img
@@ -1643,7 +1643,7 @@ onBeforeUnmount(() => {
                             :class="
                                 index === 0
                                     ? 'bg-slate-950/60'
-                                    : 'bg-orange-900/45'
+                                    : 'bg-zinc-900/45'
                             "
                         ></div>
                         <div class="relative z-10">
@@ -1651,8 +1651,8 @@ onBeforeUnmount(() => {
                                 class="text-xs font-semibold uppercase tracking-[0.2em]"
                                 :class="
                                     index === 0
-                                        ? 'text-orange-300'
-                                        : 'text-orange-50'
+                                        ? 'text-zinc-300'
+                                        : 'text-zinc-50'
                                 "
                             >
                                 {{
@@ -1671,7 +1671,7 @@ onBeforeUnmount(() => {
                                 :class="
                                     index === 0
                                         ? 'text-slate-200'
-                                        : 'text-orange-50/90'
+                                        : 'text-zinc-50/90'
                                 "
                             >
                                 {{
@@ -1841,7 +1841,7 @@ onBeforeUnmount(() => {
                                     </div>
                                     <button
                                         type="button"
-                                        class="mt-1 block h-12 text-left text-base font-semibold leading-tight text-slate-950 transition hover:text-orange-600"
+                                        class="mt-1 block h-12 text-left text-base font-semibold leading-tight text-slate-950 transition hover:text-zinc-600"
                                         @click="openProductModal(product)"
                                     >
                                         {{ product.name }}
@@ -1863,7 +1863,7 @@ onBeforeUnmount(() => {
                                 class="mt-3 flex items-center justify-between gap-3"
                             >
                                 <p
-                                    class="text-3xl font-semibold text-orange-500"
+                                    class="text-3xl font-semibold text-zinc-500"
                                 >
                                     {{ formatMoney(product.price) }}
                                 </p>
@@ -1929,7 +1929,7 @@ onBeforeUnmount(() => {
                                     </button>
                                     <button
                                         type="button"
-                                        class="rounded-xl bg-orange-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                        class="rounded-xl bg-zinc-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                         :disabled="product.stock <= 0"
                                         @click="
                                             addToCart(
@@ -2030,7 +2030,7 @@ onBeforeUnmount(() => {
                             </h3>
 
                             <p
-                                class="mt-4 text-5xl font-semibold text-orange-600"
+                                class="mt-4 text-5xl font-semibold text-zinc-600"
                             >
                                 {{ formatMoney(selectedProduct.price) }}
                             </p>
@@ -2090,7 +2090,7 @@ onBeforeUnmount(() => {
                                 </button>
                                 <button
                                     type="button"
-                                    class="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                    class="rounded-full bg-zinc-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                     :disabled="selectedProduct.stock <= 0"
                                     @click="addSelectedProductToCart"
                                 >
@@ -2265,3 +2265,6 @@ onBeforeUnmount(() => {
     }
 }
 </style>
+
+
+

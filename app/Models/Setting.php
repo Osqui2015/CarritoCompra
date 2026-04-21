@@ -49,10 +49,14 @@ class Setting extends Model
    */
   public static function branding(): array
   {
+    $defaultLogo = file_exists(public_path('branding/logo.jpg'))
+      ? asset('branding/logo.jpg')
+      : asset('branding/logo.svg');
+
     return [
-      'site_logo' => static::value('site_logo'),
-      'site_favicon' => static::value('site_favicon'),
-      'site_name' => static::value('site_name', config('app.name', 'TUS TECNOLOGIAS')),
+      'site_logo' => static::value('site_logo', $defaultLogo),
+      'site_favicon' => static::value('site_favicon', $defaultLogo),
+      'site_name' => static::value('site_name', config('app.name', 'TJ')),
     ];
   }
 
@@ -73,3 +77,4 @@ class Setting extends Model
     Cache::forget('settings.all');
   }
 }
+

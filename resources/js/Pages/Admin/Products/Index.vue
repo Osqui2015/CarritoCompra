@@ -335,11 +335,11 @@ function stockLevelClassByReference(
     const ratio = stock / Math.max(stockReference, 1);
 
     if (ratio < 0.3) {
-        return "bg-amber-100 text-amber-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     if (ratio < 0.7) {
-        return "bg-sky-100 text-sky-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     return "bg-emerald-100 text-emerald-700";
@@ -1079,3 +1079,5 @@ function secondaryCategoryNames(product: ProductItem): string {
         </div>
     </AdminLayout>
 </template>
+
+

@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin · Apariencia · {{ $branding['site_name'] ?? config('app.name', 'TUS TECNOLOGIAS') }}</title>
-    @if (!empty($branding['site_favicon']))
-        <link rel="icon" type="image/png" href="{{ $branding['site_favicon'] }}">
-    @endif
+    <title>Admin · Apariencia · {{ $branding['site_name'] ?? config('app.name', 'TJ') }}</title>
+    <link rel="icon" type="image/png"
+        href="{{ $branding['site_favicon'] ?? (file_exists(public_path('branding/logo.jpg')) ? asset('branding/logo.jpg') : asset('branding/logo.svg')) }}">
     @vite(['resources/js/app.ts'])
     @livewireStyles
 </head>
@@ -17,13 +16,13 @@
         <div
             class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
             <div class="flex items-center gap-4">
-                <img src="{{ asset('branding/logo.svg') }}" alt="Logo empresa"
+                <img src="{{ $branding['site_logo'] ?? (file_exists(public_path('branding/logo.jpg')) ? asset('branding/logo.jpg') : asset('branding/logo.svg')) }}" alt="Logo empresa"
                     class="h-12 w-auto rounded-xl object-contain object-center">
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Panel de Administracion
                     </p>
                     <h1 class="mt-1 text-2xl font-semibold text-slate-950">
-                        {{ $branding['site_name'] ?? 'TUS TECNOLOGIAS' }}</h1>
+                        {{ $branding['site_name'] ?? 'TJ' }}</h1>
                 </div>
             </div>
 
@@ -75,3 +74,5 @@
 </body>
 
 </html>
+
+

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title inertia>{{ $branding['site_name'] ?? config('app.name', 'Laravel') }}</title>
-    <link rel="icon" type="image/svg+xml" href="{{ asset('branding/logo.svg') }}">
+    <title inertia>{{ $branding['site_name'] ?? config('app.name', 'TJ') }}</title>
+    <link rel="icon" type="image/png"
+        href="{{ $branding['site_favicon'] ?? (file_exists(public_path('branding/logo.jpg')) ? asset('branding/logo.jpg') : asset('branding/logo.svg')) }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

@@ -67,7 +67,7 @@ let addMessageTimeout: number | null = null;
 let relatedModalMessageTimeout: number | null = null;
 
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 
 const isFavorite = computed(() => favoriteIds.value.includes(props.product.id));
@@ -91,7 +91,7 @@ const stockBadgeClass = computed(() => {
     }
 
     if (stockRatio.value < 0.3) {
-        return "bg-amber-100 text-amber-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     if (stockRatio.value < 0.7) {
@@ -131,7 +131,7 @@ function stockBadgeClassByProduct(product: RelatedProduct): string {
     const ratio = stockRatioByProduct(product);
 
     if (ratio < 0.3) {
-        return "bg-amber-100 text-amber-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     if (ratio < 0.7) {
@@ -594,7 +594,7 @@ onBeforeUnmount(() => {
                         class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
                     >
                         <p
-                            class="inline-flex rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white"
+                            class="inline-flex rounded-full bg-gradient-to-r from-zinc-500 to-zinc-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white"
                         >
                             Garantia DAZ
                         </p>
@@ -615,7 +615,7 @@ onBeforeUnmount(() => {
                             }}
                         </p>
 
-                        <p class="mt-4 text-5xl font-semibold text-orange-600">
+                        <p class="mt-4 text-5xl font-semibold text-zinc-600">
                             {{ formatMoney(product.price) }}
                         </p>
 
@@ -670,7 +670,7 @@ onBeforeUnmount(() => {
                             </button>
                             <button
                                 type="button"
-                                class="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                class="rounded-full bg-zinc-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                 :disabled="product.stock <= 0"
                                 @click="addCurrentProductToCart"
                             >
@@ -706,7 +706,7 @@ onBeforeUnmount(() => {
                         </h2>
                         <Link
                             :href="route('storefront')"
-                            class="text-sm font-semibold text-orange-600 transition hover:text-orange-700"
+                            class="text-sm font-semibold text-zinc-600 transition hover:text-zinc-700"
                         >
                             Ver todo
                         </Link>
@@ -756,7 +756,7 @@ onBeforeUnmount(() => {
                             </div>
                             <button
                                 type="button"
-                                class="mt-1 h-12 text-left text-base font-semibold leading-tight text-slate-900 transition hover:text-orange-600"
+                                class="mt-1 h-12 text-left text-base font-semibold leading-tight text-slate-900 transition hover:text-zinc-600"
                                 @click="openRelatedModal(related)"
                             >
                                 {{ related.name }}
@@ -776,7 +776,7 @@ onBeforeUnmount(() => {
                                 class="mt-3 flex items-center justify-between gap-3"
                             >
                                 <p
-                                    class="text-2xl font-semibold text-orange-600"
+                                    class="text-2xl font-semibold text-zinc-600"
                                 >
                                     {{ formatMoney(related.price) }}
                                 </p>
@@ -845,7 +845,7 @@ onBeforeUnmount(() => {
                                     </button>
                                     <button
                                         type="button"
-                                        class="rounded-xl bg-orange-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                        class="rounded-xl bg-zinc-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                         :disabled="related.stock <= 0"
                                         @click="
                                             addRelatedProductToCart(
@@ -937,7 +937,7 @@ onBeforeUnmount(() => {
                                 </h3>
 
                                 <p
-                                    class="mt-4 text-5xl font-semibold text-orange-600"
+                                    class="mt-4 text-5xl font-semibold text-zinc-600"
                                 >
                                     {{
                                         formatMoney(
@@ -1018,7 +1018,7 @@ onBeforeUnmount(() => {
                                     </button>
                                     <button
                                         type="button"
-                                        class="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                        class="rounded-full bg-zinc-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                         :disabled="
                                             selectedRelatedProduct.stock <= 0
                                         "
@@ -1062,3 +1062,6 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
+
+
+

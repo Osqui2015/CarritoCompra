@@ -64,7 +64,7 @@
 
                                 @case('confirmed')
                                     <span
-                                        class="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800">Confirmado</span>
+                                        class="rounded-full bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-800">Confirmado</span>
                                 @break
 
                                 @case('delivered')
@@ -87,3 +87,5 @@
         </div>
     </div>
 </div>
+
+

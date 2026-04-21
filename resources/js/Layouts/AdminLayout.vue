@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
                             Panel de Administracion
                         </p>
                         <h1 class="mt-1 text-2xl font-semibold text-slate-950">
-                            {{ branding.site_name || "TUS TECNOLOGIAS" }}
+                            {{ branding.site_name || "TJ" }}
                         </h1>
                     </div>
 
@@ -196,9 +196,9 @@ onBeforeUnmount(() => {
                     </Link>
                     <Link
                         :href="route('admin.store-info')"
-                        class="rounded-full border border-blue-600 px-4 py-2 font-semibold text-blue-700 transition hover:bg-blue-50"
+                        class="rounded-full border border-zinc-600 px-4 py-2 font-semibold text-zinc-700 transition hover:bg-zinc-50"
                         :class="{
-                            'border-blue-950 bg-blue-950 text-white':
+                            'border-zinc-950 bg-zinc-950 text-white':
                                 route().current('admin.store-info'),
                         }"
                     >
@@ -279,3 +279,5 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
+
+

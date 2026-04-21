@@ -44,7 +44,7 @@ const couponLoading = ref(false);
 const clientErrors = ref<Record<string, string>>({});
 
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 
 const form = useForm<CheckoutForm>({
@@ -626,7 +626,7 @@ onBeforeUnmount(() => {
 
                             <button
                                 type="submit"
-                                class="w-full rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:opacity-60"
+                                class="w-full rounded-full bg-zinc-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:opacity-60"
                                 :disabled="form.processing || !items.length"
                             >
                                 {{
@@ -649,3 +649,6 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
+
+
+

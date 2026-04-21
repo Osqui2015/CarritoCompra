@@ -38,14 +38,19 @@ class AppServiceProvider extends ServiceProvider
      */
     private function brandingPayload(): array
     {
+        $defaultLogo = file_exists(public_path('branding/logo.jpg'))
+            ? asset('branding/logo.jpg')
+            : asset('branding/logo.svg');
+
         if (! Schema::hasTable('settings')) {
             return [
-                'site_logo' => null,
-                'site_favicon' => null,
-                'site_name' => config('app.name', 'TUS TECNOLOGIAS'),
+                'site_logo' => $defaultLogo,
+                'site_favicon' => $defaultLogo,
+                'site_name' => config('app.name', 'TJ'),
             ];
         }
 
         return Setting::branding();
     }
 }
+

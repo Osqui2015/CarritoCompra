@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
         <input
             v-model="query"
             type="text"
-            class="w-full rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-700 outline-none focus:border-orange-400"
+            class="w-full rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-700 outline-none focus:border-zinc-400"
             placeholder="Buscar productos, marcas y mas..."
             @focus="openDropdown"
             @keydown.esc.prevent="closeDropdown"
@@ -193,10 +193,11 @@ onBeforeUnmount(() => {
                     </p>
                 </div>
 
-                <span class="text-xs font-semibold text-orange-600">
+                <span class="text-xs font-semibold text-zinc-600">
                     {{ formatMoney(result.price) }}
                 </span>
             </a>
         </div>
     </div>
 </template>
+

@@ -58,7 +58,7 @@ const modalMessage = ref<string | null>(null);
 let modalMessageTimeout: number | null = null;
 
 const siteName = computed(
-    () => page.props.branding?.site_name || "TUS TECNOLOGIAS",
+    () => page.props.branding?.site_name || "TJ",
 );
 
 function formatMoney(value: number): string {
@@ -82,7 +82,7 @@ function stockBadgeClass(product: ProductItem): string {
     const ratio = stockRatio(product);
 
     if (ratio < 0.3) {
-        return "bg-amber-100 text-amber-700";
+        return "bg-zinc-100 text-zinc-700";
     }
 
     if (ratio < 0.7) {
@@ -513,7 +513,7 @@ onBeforeUnmount(() => {
 
                             <button
                                 type="button"
-                                class="mt-1 block h-12 text-left text-base font-semibold leading-tight text-slate-900 transition hover:text-orange-600"
+                                class="mt-1 block h-12 text-left text-base font-semibold leading-tight text-slate-900 transition hover:text-zinc-600"
                                 @click="openProductModal(product)"
                             >
                                 {{ product.name }}
@@ -533,7 +533,7 @@ onBeforeUnmount(() => {
                                 class="mt-3 flex items-center justify-between gap-3"
                             >
                                 <span
-                                    class="text-2xl font-semibold text-orange-600"
+                                    class="text-2xl font-semibold text-zinc-600"
                                 >
                                     {{ formatMoney(product.price) }}
                                 </span>
@@ -599,7 +599,7 @@ onBeforeUnmount(() => {
                                     </button>
                                     <button
                                         type="button"
-                                        class="rounded-xl bg-orange-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                        class="rounded-xl bg-zinc-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                         :disabled="product.stock <= 0"
                                         @click="
                                             addToCart(
@@ -693,7 +693,7 @@ onBeforeUnmount(() => {
                                 </h3>
 
                                 <p
-                                    class="mt-4 text-5xl font-semibold text-orange-600"
+                                    class="mt-4 text-5xl font-semibold text-zinc-600"
                                 >
                                     {{ formatMoney(selectedProduct.price) }}
                                 </p>
@@ -758,7 +758,7 @@ onBeforeUnmount(() => {
                                     </button>
                                     <button
                                         type="button"
-                                        class="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+                                        class="rounded-full bg-zinc-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-600 disabled:cursor-not-allowed disabled:bg-slate-300"
                                         :disabled="selectedProduct.stock <= 0"
                                         @click="addSelectedProductToCart"
                                     >
@@ -796,3 +796,6 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
+
+
+

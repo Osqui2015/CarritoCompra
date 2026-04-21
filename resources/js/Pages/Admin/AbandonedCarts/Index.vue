@@ -110,11 +110,11 @@ function markCleared(item: AbandonedItem): void {
 
 function statusClass(status: AbandonedItem["status"]): string {
     if (status === "open") {
-        return "bg-amber-100 text-amber-800";
+        return "bg-zinc-100 text-zinc-800";
     }
 
     if (status === "reminded") {
-        return "bg-sky-100 text-sky-800";
+        return "bg-zinc-100 text-zinc-800";
     }
 
     if (status === "recovered") {
@@ -168,24 +168,24 @@ function statusClass(status: AbandonedItem["status"]): string {
 
             <div class="grid gap-4 md:grid-cols-3">
                 <article
-                    class="rounded-2xl border border-amber-200 bg-amber-50 p-5"
+                    class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5"
                 >
                     <p
-                        class="text-xs uppercase tracking-[0.2em] text-amber-700"
+                        class="text-xs uppercase tracking-[0.2em] text-zinc-700"
                     >
                         Abiertos
                     </p>
-                    <p class="mt-3 text-3xl font-semibold text-amber-900">
+                    <p class="mt-3 text-3xl font-semibold text-zinc-900">
                         {{ statusStats.open }}
                     </p>
                 </article>
                 <article
-                    class="rounded-2xl border border-sky-200 bg-sky-50 p-5"
+                    class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5"
                 >
-                    <p class="text-xs uppercase tracking-[0.2em] text-sky-700">
+                    <p class="text-xs uppercase tracking-[0.2em] text-zinc-700">
                         Con recordatorio
                     </p>
-                    <p class="mt-3 text-3xl font-semibold text-sky-900">
+                    <p class="mt-3 text-3xl font-semibold text-zinc-900">
                         {{ statusStats.reminded }}
                     </p>
                 </article>
@@ -357,7 +357,7 @@ function statusClass(status: AbandonedItem["status"]): string {
 
                         <button
                             type="button"
-                            class="w-full rounded-full border border-sky-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-sky-700"
+                            class="w-full rounded-full border border-zinc-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-zinc-700"
                             @click="markRecovered(item)"
                         >
                             Marcar recuperado
@@ -383,3 +383,5 @@ function statusClass(status: AbandonedItem["status"]): string {
         </section>
     </AdminLayout>
 </template>
+
+
