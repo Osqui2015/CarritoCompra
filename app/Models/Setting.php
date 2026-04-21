@@ -49,14 +49,12 @@ class Setting extends Model
    */
   public static function branding(): array
   {
-    $defaultLogo = file_exists(public_path('branding/logo.jpg'))
-      ? asset('branding/logo.jpg')
-      : asset('branding/logo.svg');
+    $defaultLogo = asset('branding/logo-tj.svg');
 
     return [
-      'site_logo' => static::value('site_logo', $defaultLogo),
-      'site_favicon' => static::value('site_favicon', $defaultLogo),
-      'site_name' => static::value('site_name', config('app.name', 'TJ')),
+      'site_logo' => $defaultLogo,
+      'site_favicon' => $defaultLogo,
+      'site_name' => 'TJ',
     ];
   }
 

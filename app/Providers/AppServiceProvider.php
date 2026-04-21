@@ -38,15 +38,13 @@ class AppServiceProvider extends ServiceProvider
      */
     private function brandingPayload(): array
     {
-        $defaultLogo = file_exists(public_path('branding/logo.jpg'))
-            ? asset('branding/logo.jpg')
-            : asset('branding/logo.svg');
+        $defaultLogo = asset('branding/logo-tj.svg');
 
         if (! Schema::hasTable('settings')) {
             return [
                 'site_logo' => $defaultLogo,
                 'site_favicon' => $defaultLogo,
-                'site_name' => config('app.name', 'TJ'),
+                'site_name' => 'TJ',
             ];
         }
 
