@@ -20,3 +20,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+/public/storage
+/storage/*.key
+/composer.lock  # (Opcional, depende de si quieres versiones exactas)
