@@ -21,5 +21,6 @@ yarn-error.log
 /.vscode
 /.zed
 /public/storage
+/public/hot
 /storage/*.key
 /composer.lock  # (Opcional, depende de si quieres versiones exactas)
